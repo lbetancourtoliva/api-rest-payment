@@ -12,6 +12,8 @@ Api Rest that allows to register payments from different companies.
     git clone https://github.com/lbetancourtoliva/api-rest-payment.git
     
     cd api-rest-payment
+    
+    composer install
 
 Configure your database connection information.It is configured in the api-rest-payment/app/config/parameters.yml file:
 
