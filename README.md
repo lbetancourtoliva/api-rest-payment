@@ -14,6 +14,8 @@ Api Rest that allows to register payments from different companies.
     cd api-rest-payment
     
     composer install
+    
+    composer dumpautoload
 
 Configure your database connection information.It is configured in the api-rest-payment/app/config/parameters.yml file:
 
@@ -28,7 +30,7 @@ parameters:
 
 Later execute :
 
-    php artisan migrate
+    php artisan migrate --seed
 
     php artisan serve
 
