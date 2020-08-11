@@ -37,4 +37,10 @@ class CompanyRepository extends BaseRepository
     {
         return Company::class;
     }
+
+    public function getCompanyByName($company_name)
+    {
+        return $this->model()::updateOrCreate(['name' => $company_name]);
+    }
+
 }

@@ -24,7 +24,9 @@ class UpdatePaymentAPIRequest extends APIRequest
      */
     public function rules()
     {
-        $rules = Payment::$rules;
+        $rules = [
+            'status' => 'required|in:CONFIRMED,REVERSED,INITIALIZED'
+        ];
         
         return $rules;
     }

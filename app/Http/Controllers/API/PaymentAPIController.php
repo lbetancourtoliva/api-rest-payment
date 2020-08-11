@@ -34,10 +34,10 @@ class PaymentAPIController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $payments = $this->paymentRepository->all(
-            $request->except(['skip', 'limit']),
-            $request->get('skip'),
-            $request->get('limit')
+        $payments = $this->paymentRepository->getPaymentCompanyRange(
+            $request->get('company'),
+            $request->get('payment_date_from'),
+            $request->get('payment_date_until')
         );
 
         return $this->sendResponse($payments->toArray(), 'Payments retrieved successfully');
@@ -55,7 +55,7 @@ class PaymentAPIController extends AppBaseController
     {
         $input = $request->all();
 
-        $payment = $this->paymentRepository->create($input);
+        $payment = $this->paymentRepository->store($input);
 
         return $this->sendResponse($payment->toArray(), 'Payment saved successfully');
     }

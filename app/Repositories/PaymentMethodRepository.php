@@ -37,4 +37,9 @@ class PaymentMethodRepository extends BaseRepository
     {
         return PaymentMethod::class;
     }
+
+    public function getPaymentMethodByName($payment_method_name)
+    {
+        return $this->model()::updateOrCreate(['name' => $payment_method_name]);
+    }
 }

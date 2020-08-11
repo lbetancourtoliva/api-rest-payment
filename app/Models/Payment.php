@@ -64,13 +64,17 @@ class Payment extends Model
      */
     public static $rules = [
         'payment_date' => 'required',
-        'company_id' => 'required',
+        'company' => 'required',
         'amount' => 'required',
-        'payment_method_id' => 'required',
+        'payment_method' => 'required',
         'external_reference' => 'required|unique:payment',
         'terminal' => 'required',
         'status' => 'required|in:CONFIRMED,REVERSED,INITIALIZED'
     ];
 
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'company_id', 'id');
+    }
 
 }
