@@ -13,12 +13,38 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-
-//Route::resource('companies', 'CompanyController');
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('foo', function () {
+    return 'Hello World';
+});
+
+Route::resource('payments', 'PaymentController');
+
+Route::prefix('configuration')->group(function () {
+
+    Route::get('companies/list', 'CompanyController@getCompanies')
+        ->name('configuration.companies-list');
+
+    Route::get('companies/create', 'CompanyController@getCompanies')
+        ->name('configuration.companies-create');
+
+    Route::post('companies/store', 'CompanyController@getCompanies')
+        ->name('configuration.companies-store');
+
+    Route::put('companies/edit', 'CompanyController@getCompanies')
+        ->name('configuration.companies-edit');
+
+    Route::delete('companies/destroy', 'CompanyController@getCompanies')
+        ->name('configuration.companies-destroy');
+
+    Route::get('companies/show', 'CompanyController@getCompanies')
+        ->name('configuration.companies-show');
+
+});

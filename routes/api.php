@@ -18,4 +18,31 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('payments', 'PaymentAPIController');
+Route::group(['middleware' => ['jwt.auth']], function () {
+
+        Route::resource('payments', 'PaymentAPIController');
+
+        Route::post('logout', 'AuthController@logout');
+
+        Route::prefix('configuration')->group(function () {
+
+            Route::get('companies/list', 'CompanyAPIController@getCompanies')
+                ->name('configuration.companies-list');
+
+            Route::get('companies/create', 'CompanyAPIController@getCompanies')
+                ->name('configuration.companies-create');
+
+            Route::post('companies/store', 'CompanyAPIController@getCompanies')
+                ->name('configuration.companies-store');
+
+            Route::put('companies/edit', 'CompanyAPIController@getCompanies')
+                ->name('configuration.companies-edit');
+
+            Route::delete('companies/destroy', 'CompanyAPIController@getCompanies')
+                ->name('configuration.companies-destroy');
+
+            Route::get('companies/show', 'CompanyAPIController@getCompanies')
+                ->name('configuration.companies-show');
+
+        });
+});

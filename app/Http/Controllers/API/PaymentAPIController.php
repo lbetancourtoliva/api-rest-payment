@@ -11,7 +11,7 @@ use App\Http\Controllers\AppBaseController;
 use Response;
 
 /**
- * Class PaymentController
+ * Class PaymentAPIController
  * @package App\Http\Controllers\API
  */
 
@@ -22,6 +22,7 @@ class PaymentAPIController extends AppBaseController
 
     public function __construct(PaymentRepository $paymentRepo)
     {
+        $this->middleware('auth');
         $this->paymentRepository = $paymentRepo;
     }
 

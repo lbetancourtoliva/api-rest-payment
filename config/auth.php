@@ -18,6 +18,12 @@ return [
         'passwords' => 'users',
     ],
 
+//    para que Laravel utilice JWT como método de autenticación por defecto
+//    'defaults' => [
+//        'guard' => 'api',
+//        'passwords' => 'users',
+//    ],
+
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
@@ -46,6 +52,11 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+//    para que Laravel utilice JWT como método de autenticación por defecto
+//        'api' => [
+//            'driver' => 'jwt',
+//            'provider' => 'users',
+//        ],
     ],
 
     /*
